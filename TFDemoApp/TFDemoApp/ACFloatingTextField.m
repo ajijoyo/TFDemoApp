@@ -120,7 +120,15 @@
         [self floatTheLabel];
     }
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(textFieldDidBeginEditing) name:UITextFieldTextDidBeginEditingNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(textFieldDidEndEditing) name:UITextFieldTextDidEndEditingNotification object:nil];
+    
 }
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)checkForDefaulLabel{
     
     if ([self.text isEqualToString:@""]) {
@@ -228,7 +236,7 @@
     
 }
 -(void)resignPlaceholder{
-
+    
     bottomLineView.backgroundColor = _btmLineColor;
     
     if (self.disableFloatingLabel){
@@ -255,7 +263,7 @@
         _labelPlaceholder.textColor = _placeHolderTextColor;
         bottomLineView.frame  =  bottmLineFrame;
     }];
-
+    
 }
 #pragma mark  UITextField Begin Editing.
 
@@ -282,7 +290,7 @@
         [self floatPlaceHolder:YES];
         
     }else if ([self.text isEqualToString:@""]&&!self.isFirstResponder) {
-    
+        
         [self resignPlaceholder];
         
     }else if (![self.text isEqualToString:@""]&&!self.isFirstResponder) {
@@ -293,9 +301,9 @@
         
         [self floatPlaceHolder:YES];
     }
-
+    
     [self checkForDefaulLabel];
-
+    
 }
 
 
