@@ -1,6 +1,7 @@
 # ACFloatingTextField
 
 UITextfield class to float the Placeholder and customize the placeholder while editing.
+i have remove require add delegate.
 
 ## Features
 
@@ -21,32 +22,15 @@ Download the Sample and drag & drop the ACFloatingTextField.h and ACFloatingText
 
 **1) Add Textfield From Storyboard in View Controller and Set the class to ACFloatingTextField or create the textfield programmatically.**
 
-**2) Set the Delegate.**
-
-**3) Set Placeholder Text By Following Method.**
+**2) Set Placeholder Text By Following Method.**
 
 ```objective-c
 
-[(ACFloatingTextField *)textField setTextFieldPlaceholderText:@"Username"];
+textField.placeholder = @"Username";
 
 ```
 
-**4)Implement the UITextfield Delegate methods DidBeganEditing and DidEndEditing.**
 
-```objective-c
--(void)textFieldDidBeginEditing:(UITextField *)textField {
-
-[(ACFloatingTextField *)textField textFieldDidBeginEditing];
-
-}
-
--(void)textFieldDidEndEditing:(UITextField *)textField {
-
-[(ACFloatingTextField *)textField textFieldDidEndEditing];
-
-}
-
-```
 
 ##Customization
 
